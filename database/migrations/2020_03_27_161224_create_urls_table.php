@@ -17,6 +17,8 @@ class CreateUrlsTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('NoteId');
+            $table->string('url');
+            $table->string('user_id')->nullable();
             $table->timestamps();
         });
     }

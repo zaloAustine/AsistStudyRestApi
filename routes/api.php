@@ -24,14 +24,27 @@ Route::post('/login','AunthenticationController@login');
 Route::get('/schools','AunthenticationController@getSchools');
 Route::get('/course','AunthenticationController@getCourse');
 
-Route::get('/units/{courseId}','UnitsController@getUnits');
-Route::get('/notes/{UnitId}','UnitsController@getNotes');
-Route::get('/notesData/{NoteId}','UnitsController@getNoteData');
-Route::get('/notesUrl/{NoteId}','UnitsController@getNoteUrl');
+
+
+
+
+
+
+
+
+
+
 
 
 Route::group(['middleware' => 'auth:api'], function(){
-
+    Route::get('/units/{courseId}','UnitsController@getUnits');
+    Route::get('/notes/{UnitId}','UnitsController@getNotes');
+    Route::get('/notesData/{NoteId}','UnitsController@getNoteData');
+    Route::get('/notesUrl/{NoteId}','UnitsController@getNoteUrl');
+    Route::post('/addUnit','UnitsController@postUnit');
+    Route::post('/addNotes','UnitsController@postNotes');
+    Route::post('/addNotesData','UnitsController@postNotesData');
+    Route::post('/addNotesUrls','UnitsController@postNotesUrl');
 
 });
 

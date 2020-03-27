@@ -15,6 +15,7 @@ class CreateUnitsTable extends Migration
     {
         Schema::create('units', function (Blueprint $table) {
             $table->id();
+            $table->string('user_id')->nullable();
             $table->string('name');
             $table->string('courseId');
             $table->timestamps();

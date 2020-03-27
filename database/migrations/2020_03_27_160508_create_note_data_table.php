@@ -16,7 +16,10 @@ class CreateNoteDataTable extends Migration
         Schema::create('note_data', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('file_urls');
+            $table->string('file_urls1');
+            $table->string('file_urls2') ->nullable();
+            $table->string('file_urls3') -> nullable();
+            $table->string('user_id')->nullable();
             $table->string('NoteId');
             $table->timestamps();
         });
