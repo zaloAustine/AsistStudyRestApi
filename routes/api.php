@@ -45,6 +45,7 @@ Route::group(['middleware' => 'auth:api'], function(){
     Route::post('/addNotes','UnitsController@postNotes');
     Route::post('/addNotesData','UnitsController@postNotesData');
     Route::post('/addNotesUrls','UnitsController@postNotesUrl');
-
+    Route::get('/myid','UnitsController@getUserID');
+    Route::delete('delete/{id}/','UnitsController@unitDelete');
 });
 

@@ -76,9 +76,9 @@ class UnitsController extends Controller
         $unit = new NoteData();
         $unit->name = $request->get('name');
         $unit->file_urls1 = $request->get('file_urls1');
-        $unit->file_urls2 = $request->get('file_urls1');
+        $unit->file_urls2 = $request->get('file_urls2');
         $unit->user_id = Auth::id();
-        $unit->file_urls3 = $request->get('file_urls1');
+        $unit->file_urls3 = $request->get('file_urls3');
         $unit->NoteId = $request->get('NoteId');
 
         if($unit->save()==true){
@@ -113,4 +113,38 @@ class UnitsController extends Controller
                 'message'=>"An Error Occurred"]);
         }
     }
-}
+
+    public function getUserID(Request $request)
+    {
+        return (['user_id'=>Auth::id()]);
+    }
+
+
+
+    public function unitDelete(Request $request){
+
+        $id = $request->route()->parameter('id');
+
+        try {
+            if(Units::where('id',$id)->delete()){
+
+                Notes::where('UnitId',$id)->delete();
+                NoteData::where('NoteId',$id)->delete();
+                Url::where('NoteId',$id)->delete();
+
+                return ([
+                    'message'=>"Successful Delete"]);
+            }else{
+                return ([
+                    'message'=>"An Error Occurred"]);
+            }
+
+
+        }catch (\Exception $e){
+            return ([
+                'Error'=>"Successful Delete"]);
+
+            }
+
+        }
+    }
