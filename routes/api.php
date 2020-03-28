@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AunthenticationController;
 use App\Http\Controllers\UnitsController;
+use App\Http\Controllers\BlogController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -47,5 +48,16 @@ Route::group(['middleware' => 'auth:api'], function(){
     Route::post('/addNotesUrls','UnitsController@postNotesUrl');
     Route::get('/myid','UnitsController@getUserID');
     Route::delete('delete/{id}/','UnitsController@unitDelete');
+
+    Route::get('/allpost','BlogController@getAllPosts');
+    Route::get('/userposts/{user_id}','BlogController@getUserPosts');
+    Route::post('/post','BlogController@post');
+    Route::delete('/deletepost/{id}','BlogController@deletepost');
+
+    Route::get('/allcomments/{post_id}','BlogController@getAllComments');
+    Route::get('/usercomments/{user_id}','BlogController@getUserComments');
+    Route::post('/comment','BlogController@comment');
+    Route::delete('/deletecomment/{id}','BlogController@deletecomment');
+
 });
 
