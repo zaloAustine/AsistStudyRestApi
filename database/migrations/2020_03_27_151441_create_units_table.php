@@ -17,6 +17,8 @@ class CreateUnitsTable extends Migration
             $table->id();
             $table->string('user_id')->nullable();
             $table->string('name');
+            $table->string('description');
+            $table->string('image');
             $table->string('courseId');
             $table->timestamps();
         });

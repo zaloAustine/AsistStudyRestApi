@@ -6,6 +6,7 @@ use App\comment;
 use App\NoteData;
 use Illuminate\Http\Request;
 use App\post;
+use Illuminate\Support\Facades\Auth;
 
 class BlogController extends Controller
 {
@@ -88,9 +89,9 @@ class BlogController extends Controller
     }
 
     public function deletecomment(Request $request){
-        $id = $request->route()->parameter('user_id');
+        $id = $request->route()->parameter('id');
 
-        if(comment::where('user_id',$id)->delete()){
+        if(comment::where('id',$id)->delete()){
             return ([
                 'message'=>"Successful Delete"]);
         }else{

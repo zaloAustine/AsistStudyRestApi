@@ -17,6 +17,9 @@ class CreateNotesTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('UnitId');
+            $table->string('description');
+            $table->string('image')->nullable();
+            $table->string('school');
             $table->string('user_id')->nullable();
             $table->timestamps();
         });

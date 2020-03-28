@@ -20,10 +20,19 @@ class UnitsController extends Controller
         return $desired_units;
     }
 
+    public function getNewUnits(Request $request){
+        $id = $request->route()->parameter('courseId');
+        $desired_units = Units::where('courseId',$id)->orderBy('created_at','desc')->get();
+        return $desired_units;
+    }
+
     public function postUnit(Request $request){
         $unit = new Units();
         $unit->user_id = Auth::id();
         $unit->name = $request->get('name');
+        $unit->description = $request->get('description');
+        $unit->image =  $request->get('image');
+
         $unit->courseId = $request->get('courseId');
 
         if($unit->save()==true){
@@ -52,7 +61,10 @@ class UnitsController extends Controller
         $unit = new Notes();
         $unit->name = $request->get('name');
         $unit->user_id = Auth::id();
+        $unit->description = $request->get('description');
+        $unit->description = $request->get('school');
         $unit->UnitId = $request->get('UnitId');
+        $unit->image =  $request->get('image');
 
         if($unit->save()==true){
             return ([

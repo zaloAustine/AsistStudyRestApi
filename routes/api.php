@@ -47,7 +47,9 @@ Route::group(['middleware' => 'auth:api'], function(){
     Route::post('/addNotesData','UnitsController@postNotesData');
     Route::post('/addNotesUrls','UnitsController@postNotesUrl');
     Route::get('/myid','UnitsController@getUserID');
+    Route::get('/recentUnits/{courseId}','UnitsController@getNewUnits');
     Route::delete('delete/{id}/','UnitsController@unitDelete');
+
 
     Route::get('/allpost','BlogController@getAllPosts');
     Route::get('/userposts/{user_id}','BlogController@getUserPosts');
@@ -58,6 +60,8 @@ Route::group(['middleware' => 'auth:api'], function(){
     Route::get('/usercomments/{user_id}','BlogController@getUserComments');
     Route::post('/comment','BlogController@comment');
     Route::delete('/deletecomment/{id}','BlogController@deletecomment');
+
+
 
 });
 
